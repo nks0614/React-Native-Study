@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import LoginScreen from './LoginScreen'
 import {
   SafeAreaView,
   StyleSheet,
@@ -27,34 +28,13 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text style={{
-        fontSize: 30,
-        color: 'gray'
-      }}>Hello world</Text>
-      <Text>This is Text</Text>
-      <TouchableOpacity
-        onPress={() => {
-
-        }}
-      >
-        <Text style={{
-          fontSize: 24
-        }}>TEXT</Text>
-      </TouchableOpacity>
-
-    </View>
+    <LoginScreen/>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
 });
 
 export default App;
