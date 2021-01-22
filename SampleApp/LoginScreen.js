@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -25,71 +25,71 @@ const colors = {
   paleGray : 'rgb(213, 227, 234)'
 }
 
-class LoginScreen extends Component{
-	constructor(props){
-		super(props)
-		this.state = {
-			email : '',
-			pw : ''
-		}
-	}
+const LoginScreen = () => {
+	const [value, setValue] = useState({
+		email : '',
+		pw : ''
+	})
 
-	render(){
-		return (
-			<View style={styles.container}>
-				<View style={styles.iconWrapper}>
-					<Image style={styles.icon} source={require('./assets/blue-whale.png')}/>
-					<Text style={styles.iconText}>Hello</Text>
-				</View>
-				<View style={styles.wrapper}>
-					<View style={styles.wrapperInput}>
-						<TextInput 
-								style={[
-									styles.input, 
-									{marginTop : 60}
-								]}
-								value={this.state.email}
-								placeholder='Write Email'
-								placeholderTextColor={colors.blueyGray}
-								onChangeText={(text) => {
-									this.onTextChanged('EMAIL', text)
-								}}/>
-						<TextInput 
-								style={[
-									styles.input, 
-									{marginTop : 12}
-								]}
-								value={this.state.pw}
-								placeholder='Write Password'
-								placeholderTextColor={colors.blueyGray}
-								onChangeText={(text) => {
-									this.onTextChanged('PASSWORD', text)
-								}}
-								secureTextEntry={true}/>			
-					</View>
-					<TouchableOpacity style={styles.touchForgot}>
-						<Text style={styles.forgotPW}>Forgot Password?</Text>
-					</TouchableOpacity>
-					<Text style={styles.copyright}>copyright by nkstar</Text>
-				</View>
-			</View>
-		)
-	}
+	const { email, pw } = value
 
-	onTextChanged = (type, text) => {
+	const onTextChanged = (type, text) => {
 		switch(type){
 			case 'EMAIL':
-				this.setState({
-					email: text
+				setValue({
+					...value,
+					email : text
 				})
 				break
 			case 'PASSWORD':
-				this.setState({
-					pw: text
+				setValue({
+					...value,
+					pw : text
 				})
 				break
 		}
+		console.log(email + ' ' + pw)
 	}
+
+	return (
+		<View style={styles.container}>
+			<View style={styles.iconWrapper}>
+				<Image style={styles.icon} source={require('./assets/blue-whale.png')}/>
+				<Text style={styles.iconText}>Hello</Text>
+			</View>
+			<View style={styles.wrapper}>
+				<View style={styles.wrapperInput}>
+					<TextInput 
+						style={[
+							styles.input, 
+							{marginTop : 60}
+						]}
+						value={email}
+						placeholder='Write Email'
+						placeholderTextColor={colors.blueyGray}
+						onChangeText={(text) => {
+							onTextChanged('EMAIL', text)
+						}}/>
+					<TextInput 
+						style={[
+							styles.input, 
+							{marginTop : 12}
+						]}
+						value={pw}
+						placeholder='Write Password'
+						placeholderTextColor={colors.blueyGray}
+						onChangeText={(text) => {
+							onTextChanged('PASSWORD', text)
+						}}
+						secureTextEntry={true}/>			
+				</View>
+				<TouchableOpacity style={styles.touchForgot}>
+					<Text style={styles.forgotPW}>Forgot Password?</Text>
+				</TouchableOpacity>
+				<Text style={styles.copyright}>copyright by nkstar</Text>
+			</View>
+		</View>
+	)
 }
 
 
