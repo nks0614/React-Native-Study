@@ -8,7 +8,7 @@
 
 import React, {useState} from 'react';
 import {
-  StyleSheet, TextInput, View
+  StyleSheet, TextInput, View, Text
 } from 'react-native';
 
 const colors = {
@@ -30,7 +30,15 @@ const CustomTextInput = (props) => {
     return (
         <View style={[
             styles.wrapper,
+            props.styles
             ]}>
+            {
+                (!!props.label) 
+                ? <Text style = {focus ? styles.labelFocus : styles.label}>
+                    {props.label}
+                </Text> 
+                : <View/>
+            }
             <TextInput
                 style={[
                     props.style,
@@ -39,8 +47,8 @@ const CustomTextInput = (props) => {
                 multiline={props.multiline}
                 onChangeText={props.onChangeText}
                 value={props.value}
-                onFocus={() => { setValue({ focus : true}) }}
-                onBlur={() => { setValue({ focus : false}) }}
+                onFocus={() => { setValue({ focus : true }) }}
+                onBlur={() => { setValue({ focus : false }) }}
                 placeholder={props.placeholder}
                 placeholderTextColor={props.placeholderTextColor}
                 secureTextEntry={props.secureTextEntry}
@@ -79,6 +87,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-start'
+    },
+    label: {
+        fontSize: 16,
+        color: colors.blueyGray,
+        marginBottom: 8
+    },
+    labelFocus: {
+        color: colors.dodgerBlue,
+        fontSize: 16,
+        marginBottom: 8
     }
 });
 

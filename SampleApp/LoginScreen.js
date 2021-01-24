@@ -56,13 +56,14 @@ const LoginScreen = () => {
 		<View style={styles.container}>
 			<View style={styles.iconWrapper}>
 				<Image style={styles.icon} source={require('./assets/blue-whale.png')}/>
-				<Text style={styles.iconText}>Hello</Text>
+				<Text style={styles.iconText}>Hello World!</Text>
 			</View>
 			<View style={styles.wrapper}>
 				<View style={styles.wrapperInput}>
 					<CustomTextInput
-						style={{marginTop : 60}}
+						styles={{marginTop: 60}}
 						value={email}
+						label={'email'}
 						onChangeText={(text) => {
 							onTextChanged('EMAIL', text)
 						}}
@@ -70,8 +71,9 @@ const LoginScreen = () => {
 						placeholderTextColor={colors.blueyGray}
 					/>
 					<CustomTextInput
-						style={{marginTop : 12}}
+						styles={{marginTop: 12}}
 						value={pw}
+						label={'password'}
 						onChangeText={(text) => {
 							onTextChanged('PASSWORD', text)
 						}}
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
     	alignItems: 'flex-start'
   	},
   	icon: {
-    	width: '100%',
+    	width: 60,
     	height: 60
   	},
   	iconText: {
