@@ -7,7 +7,7 @@
  */
 
 import React, { useState } from 'react';
-import CustomTextInput from './TextInput'
+import CustomTextInput from './Component/TextInput'
 import {
   	StyleSheet,
   	View,
@@ -81,29 +81,6 @@ const LoginScreen = () => {
 						placeholderTextColor={colors.blueyGray}
 						secureTextEntry={true}
 					/>
-					{/* <TextInput 
-						style={[
-							styles.input, 
-							{marginTop : 60}
-						]}
-						value={email}
-						placeholder='Write Email'
-						placeholderTextColor={colors.blueyGray}
-						onChangeText={(text) => {
-							onTextChanged('EMAIL', text)
-						}}/> */}
-					{/* <TextInput 
-						style={[
-							styles.input, 
-							{marginTop : 12}
-						]}
-						value={pw}
-						placeholder='Write Password'
-						placeholderTextColor={colors.blueyGray}
-						onChangeText={(text) => {
-							onTextChanged('PASSWORD', text)
-						}}
-						secureTextEntry={true}/>			 */}
 				</View>
 				<TouchableOpacity style={styles.touchForgot}>
 					<Text style={styles.forgotPW}>Forgot Password?</Text>
